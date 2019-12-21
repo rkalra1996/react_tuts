@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 // importing a componenet with capital name , because jsx knows it is custom and not native one
 import Person from './Person/Person';
-import Person2 from './Person/Person2';
 
 class App extends Component {
   // all components, whether functional or class based, have a special property called state
@@ -17,7 +16,13 @@ class App extends Component {
 
   switchNameHandler = () => {
     // switch the names of person present inside state
-    console.log('Function called');
+    this.setState({
+      persons: [
+        {name: 'Rishabh Kalra', age: 20},
+        {name: 'Rishabh 2', age: 35},
+        {name: 'Rishabh 3', age: 40}
+      ]
+    })
   }
   render() {
     return (
@@ -32,8 +37,6 @@ class App extends Component {
          * rather than calling it immediately
          */}
         <button onClick={this.switchNameHandler}>Click to Switch</button>
-        <p>Below are the dynamic person2 which increase their age by clicking on them</p>
-        <Person2 />
       </div>
     );
   }
