@@ -1,4 +1,6 @@
 import React from 'react';
+
+import './Person.css';
 // functional component
 const person = (props) => {
     // This is stateless component as it does not use internal state
@@ -7,7 +9,7 @@ const person = (props) => {
     // In case of class based components, this.props is by default available, you don't need to provide it seperately
     // App component is example of class based component
     return (
-<p onClick={props.click}>I am {props.name} and i am {props.age} years old {props.children ? 'and ' + props.children : ''}</p>
+<p className="Person" onClick={props.click}>I am {props.name} and i am {props.age} years old {props.children ? 'and ' + props.children : ''}</p>
     );
 }
 

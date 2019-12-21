@@ -27,6 +27,15 @@ class App extends Component {
     })
   }
   render() {
+    const buttonStyle = {
+      minWidth: '100px',
+      font: 'inherit',
+      cursor: 'pointer',
+      padding: '10px',
+      backgroundColor: 'green',
+      color: 'white',
+      border: 'none'
+    }
     return (
       <div className="App">
         <h1>Hi I am a react application</h1>
@@ -38,7 +47,7 @@ class App extends Component {
          * and will result into errors. Since it has to be called later on, we are just passing the reference of the function
          * rather than calling it immediately
          */}
-        <button onClick={this.switchNameHandler}>Click to Switch</button>
+        <button style={buttonStyle} onClick={this.switchNameHandler}>Click to Switch</button>
         <Person2 />
       </div>
     );
