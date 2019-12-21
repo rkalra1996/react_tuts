@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // importing a componenet with capital name , because jsx knows it is custom and not native one
 import Person from './Person/Person';
+import Person2 from './Person2/Person2';
 
 class App extends Component {
   // This is stateful component as it is using some form of state
@@ -29,15 +30,16 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi I am a react application</h1>
-        <Person  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies are Playing Golf</Person>
-        <Person  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        <Person click={this.switchNameHandler}  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+        <Person click={this.switchNameHandler}  name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies are Playing Golf</Person>
+        <Person click={this.switchNameHandler}  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
         {/**
          * NOTE : there are no () after the function call. This is because ifyou provide parenthesis, it will be called immediately
          * and will result into errors. Since it has to be called later on, we are just passing the reference of the function
          * rather than calling it immediately
          */}
         <button onClick={this.switchNameHandler}>Click to Switch</button>
+        <Person2 />
       </div>
     );
   }
