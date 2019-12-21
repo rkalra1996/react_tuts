@@ -13,6 +13,11 @@ class App extends Component {
       {name: 'Rishabh 3', age: 40}
     ]
   }
+
+  switchNameHandler = () => {
+    // switch the names of person present inside state
+    console.log('Function called');
+  }
   render() {
     return (
       <div className="App">
@@ -20,7 +25,12 @@ class App extends Component {
         <Person  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person  name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies are Playing Golf</Person>
         <Person  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        <button>Click to Switch</button>
+        {/**
+         * NOTE : there are no () after the function call. This is because ifyou provide parenthesis, it will be called immediately
+         * and will result into errors. Since it has to be called later on, we are just passing the reference of the function
+         * rather than calling it immediately
+         */}
+        <button onClick={this.switchNameHandler}>Click to Switch</button>
       </div>
     );
   }
