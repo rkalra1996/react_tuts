@@ -4,6 +4,7 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  // This is stateful component as it is using some form of state
   // all components, whether functional or class based, have a special property called state
   // this state helps to manage data from within the component unlike supplying data from outside the component
   state = {

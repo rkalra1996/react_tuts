@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 // functional component
 const Person2 = (props) => {
+    // This is stateful component as it is also using some sort of internal state
     // Demonstration of accessing states in functional components.
     // Few things to note about states in functional component
     // 1. You have to use useState hook to access states in functional components
