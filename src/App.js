@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // importing a componenet with capital name , because jsx knows it is custom and not native one
 import Person from './Person/Person';
+import Person2 from './Person/Person2';
 
 class App extends Component {
   // all components, whether functional or class based, have a special property called state
@@ -31,6 +32,8 @@ class App extends Component {
          * rather than calling it immediately
          */}
         <button onClick={this.switchNameHandler}>Click to Switch</button>
+        <p>Below are the dynamic person2 which increase their age by clicking on them</p>
+        <Person2 />
       </div>
     );
   }
