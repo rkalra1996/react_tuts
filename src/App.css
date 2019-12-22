@@ -2,3 +2,6 @@
   text-align: center;
 }
 
+.App .btnContainer {
+  margin: 20px auto;
+}
