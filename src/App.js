@@ -17,6 +17,17 @@ class App extends Component {
     showPersons : false,
   }
 
+  getPersons = () => {
+    // the function is returning JSX code. This is valid because under the hood its just plain js
+    return (
+      <div className="personContainer">
+        <Person click={this.switchNameHandler}  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+        <Person click={this.switchNameHandler}  name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies are Playing Golf</Person>
+        <Person click={this.switchNameHandler}  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+      </div>
+    );
+  }
+
   togglePersons = () => {
     const currentVisibility = this.state.showPersons;
     this.setState({
@@ -44,6 +55,12 @@ class App extends Component {
       color: 'white',
       border: 'none'
     }
+
+    // since the render function is called everytime a change occurs, we can take advantage of it
+    let persons = null;
+    if (this.state.showPersons) {
+      persons = this.getPersons();
+    }
     return (
       <div className="App">
         <h1>Hi I am a react application</h1>
@@ -51,14 +68,8 @@ class App extends Component {
           <button style={buttonStyle} onClick={this.togglePersons}>Toggle Persons</button>
         </div>
         {
-          // writing conditional to show / hide person list
-          this.state.showPersons ?
-          <div className="personContainer">
-            <Person click={this.switchNameHandler}  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-            <Person click={this.switchNameHandler}  name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies are Playing Golf</Person>
-            <Person click={this.switchNameHandler}  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-          </div> 
-          : null
+          // displaying the persons list if the showPerson is true. The persons variable is JSX element so it will render appropriately
+        persons
         }
         {/**
          * NOTE : there are no () after the function call. This is because ifyou provide parenthesis, it will be called immediately
