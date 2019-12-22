@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+.btnContainer {
+  margin: 20px auto;
+}
+
+.normalBtn {
+  min-width: 100px;
+  font: inherit;
+  cursor: pointer;
+  background-color: green;
+  padding: 10px;
+  color: white;
+  border: none;
+}
+
+.normalBtn:hover {
+  background-color: orange;
+  
+}
+
+.normalBtn:disabled {
+  background-color: red;
+}
