@@ -21,9 +21,11 @@ class App extends Component {
     // the function is returning JSX code. This is valid because under the hood its just plain js
     return (
       <div className="personContainer">
-        <Person click={this.switchNameHandler}  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person click={this.switchNameHandler}  name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies are Playing Golf</Person>
-        <Person click={this.switchNameHandler}  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        {
+          this.state.persons.map(person => {
+            return <Person click={this.switchNameHandler}  name={person.name} age={person.age}/>
+          })
+        }
       </div>
     );
   }
