@@ -17,13 +17,22 @@ class App extends Component {
     showPersons : false,
   }
 
+  deletePerson = (personIndex) => {
+    // delete the current clicked person
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({
+      persons
+    });
+  }
+
   getPersons = () => {
     // the function is returning JSX code. This is valid because under the hood its just plain js
     return (
       <div className="personContainer">
         {
-          this.state.persons.map(person => {
-            return <Person click={this.switchNameHandler}  name={person.name} age={person.age}/>
+          this.state.persons.map((person, index) => {
+            return <Person click={this.deletePerson.bind(this, index)}  name={person.name} age={person.age} key={index}/>
           })
         }
       </div>
@@ -53,7 +62,6 @@ class App extends Component {
       font: 'inherit',
       cursor: 'pointer',
       padding: '10px',
-      backgroundColor: 'green',
       color: 'white',
       border: 'none'
     }
@@ -67,7 +75,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi I am a react application</h1>
         <div className="btnContainer">
-          <button style={buttonStyle} onClick={this.togglePersons}>Toggle Persons</button>
+          <button style={buttonStyle} className={this.state.persons.length < 1 ? 'disabledBtn' : 'btnDefaultColor'} onClick={this.togglePersons} disabled={this.state.persons.length < 1 ? true : false}>Toggle Persons</button>
         </div>
         {
           // displaying the persons list if the showPerson is true. The persons variable is JSX element so it will render appropriately
@@ -79,7 +87,7 @@ class App extends Component {
          * rather than calling it immediately
          */}
          <div className="btnContainer">
-          <button style={buttonStyle} onClick={this.switchNameHandler}>Click to Switch</button>
+          <button style={buttonStyle} className="btnDefaultColor" onClick={this.switchNameHandler}>Click to Switch</button>
          </div>
         <Person2 />
       </div>
