@@ -18,11 +18,6 @@ const Person2 = (props) => {
         ]
     });
 
-    // creating state for another data seperately
-    const [otherState, setOtherState] = useState({
-        other: 'This is other state'
-    });
-
     const incrementPerson2Age = (clickedPerson2Index) => {
         // increment the age of clicked person by 1
         const newPersonState = {...personState};

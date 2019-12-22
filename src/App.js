@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classes from './App.module.css';
 // importing a componenet with capital name , because jsx knows it is custom and not native one
 import Person from './Person/Person';
-import Person2 from './Person2/Person2';
 
 class App extends Component {
   // This is stateful component as it is using some form of state
@@ -89,7 +88,6 @@ class App extends Component {
            }
           <button className={classes.normalBtn} onClick={this.switchNameHandler}>Click to Switch</button>
          </div>
-        <Person2 />
       </div>
     );
   }
