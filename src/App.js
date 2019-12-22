@@ -19,7 +19,11 @@ class App extends Component {
 
   deletePerson = (personIndex) => {
     // delete the current clicked person
-    const persons = this.state.persons;
+    // this is not the correct way because we are changing the state directly (mutation is bad)
+    // const persons = this.state.persons;
+    // correct way is below
+    const persons = [...this.state.persons];
+    // or const persons = this.state.persons.slice()
     persons.splice(personIndex, 1);
     this.setState({
       persons
