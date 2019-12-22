@@ -5,11 +5,3 @@
 .App .btnContainer {
   margin: 20px auto;
 }
-
-.App .disabledBtn {
-  background-color: red;
-}
-
-.App .btnDefaultColor {
-  background-color: green;
-}

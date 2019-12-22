@@ -4,6 +4,10 @@ import './App.css';
 import Person from './Person/Person';
 import Person2 from './Person2/Person2';
 
+// To solve the issue of pseudo-elements when writing inline style like the style object below, there is a package 'radium'
+// It allows you to write pseudo-css and media queries within JS.
+import Radium from 'radium';
+
 class App extends Component {
   // This is stateful component as it is using some form of state
   // all components, whether functional or class based, have a special property called state
@@ -65,9 +69,16 @@ class App extends Component {
       minWidth: '100px',
       font: 'inherit',
       cursor: 'pointer',
+      backgroundColor: 'green',
       padding: '10px',
       color: 'white',
-      border: 'none'
+      border: 'none',
+      ':hover': {
+        backgroundColor: 'orange'
+      },
+      ':disabled': {
+        backgroundColor: 'red',
+      }
     }
 
     // since the render function is called everytime a change occurs, we can take advantage of it
@@ -79,7 +90,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi I am a react application</h1>
         <div className="btnContainer">
-          <button style={buttonStyle} className={this.state.persons.length < 1 ? 'disabledBtn' : 'btnDefaultColor'} onClick={this.togglePersons} disabled={this.state.persons.length < 1 ? true : false}>Toggle Persons</button>
+          <button style={buttonStyle} key="toggleBtnKey" onClick={this.togglePersons} disabled={this.state.persons.length < 1 ? true : false}>Toggle Persons</button>
         </div>
         {
           // displaying the persons list if the showPerson is true. The persons variable is JSX element so it will render appropriately
@@ -91,7 +102,11 @@ class App extends Component {
          * rather than calling it immediately
          */}
          <div className="btnContainer">
-          <button style={buttonStyle} className="btnDefaultColor" onClick={this.switchNameHandler}>Click to Switch</button>
+           {
+           //NOTE : since radium is being used and we have used same set of style object in multiple elements, we need to make these elements
+           // unique by passing a unique key attribute / ref attribute. Concept is similar to for loop in JSX
+           }
+          <button style={buttonStyle} key="switchBtnKey" onClick={this.switchNameHandler}>Click to Switch</button>
          </div>
         <Person2 />
       </div>
@@ -99,4 +114,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
