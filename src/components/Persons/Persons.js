@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Person from './Person/Person';
 
-const persons = (props) => {
-  console.log('[Persons.js] render')
-    // a functional component which will return person list
+class Persons extends Component {
+    
+  render() {
     return (
-        <div className="personContainer">
-          {
-            props.persons.map((person, index) => {
-              return <Person 
-              click={props.deletePerson.bind(this, index)}  
-              name={person.name} 
-              age={person.age} 
-              key={index}/>
-            })
-          }
-        </div>
-      );
+      <div className="personContainer">
+        {
+          this.props.persons.map((person, index) => {
+            return <Person 
+            click={this.props.deletePerson.bind(this, index)}  
+            name={person.name} 
+            age={person.age} 
+            key={index}/>
+          })
+        }
+      </div>
+    );
+  }
 }
 
-export default persons;
+export default Persons;
