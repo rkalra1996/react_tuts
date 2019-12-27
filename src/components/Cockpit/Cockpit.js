@@ -12,11 +12,26 @@ const Cockpit = (props) => {
         // but we can control it too.....
         // Example, this function will be executed only once
         // Note that it WILL TRIGGER the first time as it is the default behaviour
-        setTimeout(() => {
-            alert('hi');
-        }, 1000)
+
+        // You can even do cleanup using return in the same useEffect REACT HOOK as shown below
         console.log('[Cockpit.js] useEffect');
+
+        // what to do when the component unmoounts
+        // In this case it will trigger only once because we have passed empty array for render cycle as well
+        return () => {
+            console.log('[Cockpit.js] unmmounting called')
+        }
     }, []);
+
+    // you can even call multiple useEffect to control specific behaviours
+    useEffect(() => {
+        // This one will execute on every render cycle
+        console.log('[Cockpit.js] useEffect2');
+        return () => {
+            // This will be called after every render cycle is finished, in short after every render, a new render cycle enbles, just before that
+            console.log('[Cockpit.js] unmmounting2 called')
+        }
+    });
     console.log('[Cockpit.js] render')
     return (
         <div>
