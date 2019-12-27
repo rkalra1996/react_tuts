@@ -7,22 +7,43 @@ class App extends Component {
   // This is stateful component as it is using some form of state
   // all components, whether functional or class based, have a special property called state
   // this state helps to manage data from within the component unlike supplying data from outside the component
-  state = {
-    persons: [
-      {name: 'Rishabh 1', age: 20},
-      {name: 'Rishabh 2', age: 30},
-      {name: 'Rishabh 3', age: 40}
-    ],
-    showPersons : false,
-  }
+
+  /**
+   * Class based ccomponents have access to lifecycle hooks. LifeCycle hooks are different form react hooks
+   * The Sequence of lifecycle hooks that trigger on creation are 
+   * 1. Constructor
+   * 2. getDerivedStateFromProps
+   * 3. render
+   * 4. componentWillMount
+   * 5. componentDidMount
+   * 
+   * Usage has been shown below
+   */
+
+   constructor() {
+     // if you are calling a constructor, super is mandatory
+     super();
+     console.log('[App.js] constructor');
+    this.state = {
+      persons: [
+        {name: 'Rishabh 1', age: 20},
+        {name: 'Rishabh 2', age: 30},
+        {name: 'Rishabh 3', age: 40}
+      ],
+      showPersons : false,
+    }
+   }
+
+   // for getDerivedStateFromProps, use static
+   static getDerivedStateFromProps(props, state) {
+     // the function should always return a state, even a modified one
+     console.log('[App.js] getDerivedStateFromProps');
+     return state;
+   }
 
   deletePerson = (personIndex) => {
     // delete the current clicked person
-    // this is not the correct way because we are changing the state directly (mutation is bad)
-    // const persons = this.state.persons;
-    // correct way is below
     const persons = [...this.state.persons];
-    // or const persons = this.state.persons.slice()
     persons.splice(personIndex, 1);
     this.setState({
       persons
@@ -53,8 +74,17 @@ class App extends Component {
       ]
     })
   }
-  render() {
 
+  /* componentWillMount() {
+    // This ifecycle hook is now deprecated from 16.3 onwards
+    console.log('[App.js] component will mount');
+  } */
+
+  componentDidMount() {
+    console.log('[App.js] component did mount')
+  }
+  render() {
+    console.log('[App.js] render');
     // since the render function is called everytime a change occurs, we can take advantage of it
     let persons = null;
     if (this.state.showPersons) {

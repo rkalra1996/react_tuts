@@ -3,6 +3,7 @@ import React from 'react';
 import classes from './Person.module.css';
 // functional component
 const person = (props) => {
+    console.log('[Person.js] render')
     // This is stateless component as it does not use internal state
     // NOTE : since this is a functional component, it will have one argument, names props here, which will
     // have all the properties provided in the component (like attributes, html etc).

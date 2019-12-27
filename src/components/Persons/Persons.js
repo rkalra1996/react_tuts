@@ -2,6 +2,7 @@ import React from 'react';
 import Person from './Person/Person';
 
 const persons = (props) => {
+  console.log('[Persons.js] render')
     // a functional component which will return person list
     return (
         <div className="personContainer">

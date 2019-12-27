@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Cockpit.module.css';
 
 const cockpit = (props) => {
+    console.log('[Cockpit.js] render')
     return (
         <div>
             <h1>Hi I am a react application</h1>
