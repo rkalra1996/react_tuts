@@ -10,13 +10,13 @@ const Cockpit = (props) => {
 
         // The issue is its feature, to get triggered onevery render
         // but we can control it too.....
-        // Example, this function will be executed only when persons variable changes
+        // Example, this function will be executed only once
         // Note that it WILL TRIGGER the first time as it is the default behaviour
         setTimeout(() => {
             alert('hi');
         }, 1000)
         console.log('[Cockpit.js] useEffect');
-    }, [props.persons]);
+    }, []);
     console.log('[Cockpit.js] render')
     return (
         <div>
